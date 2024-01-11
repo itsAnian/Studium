@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+
+<body>
+        <ul>
+            <li><a href="#headline">Überschrift</a></li>
+            <li><a href="#welcome">Willkommen</a></li>
+            <li><a href="#links">Links</a></li>
+        </ul>
+
+    <h1 id="headline">Hallo!</h1>
+    <p id="welcome">Ich <strong>freue</strong> mich, dass du den Weg zu mir gefunden hast.</p>
+    <hr>
+    <p>Schau dich doch ein bisschen um!<br>Viel Spaß!</p>
+
+    <p id="links">Hier noch <em>zwei</em> Links:<br><br>
+        <a href="https://wiki.selfhtml.org/" target="_blank">Selfhtml</a><br>
+        <a href="https://www.w3schools.com/" target="_self">W3Schools</a>
+    </p>
+
+    <p>
+        <ul>
+            <li>Punkt 1</li>
+            <li>Punkt 2</li>
+            <li>Punkt 3</li>
+        </ul>
+
+        <ol>
+            <li>ABC</li>
+            <li>DEF</li>
+            <li>GHI</li>
+        </ol>
+    </p>
+
+    <div id="group1">
+        <p>This is my first paragraph.</p>
+        <p>This is my <span style="background-color: yellow;">second</span> paragraph.</p>
+        <img src="coffee.png" alt="Coffee cup" width="200px">
+        <p>This is my final paragraph.</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Beschreibung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="schuetz.jpg" alt="Franziska Schütz" width="50px"></td>
+                <td>Das bin ich.</td>
+            </tr>
+            <tr>
+                <td><img src="avatar.jpg" alt="Avatar von Franziska Schütz" width="50px"></td>
+                <td>Das ist mein Avatar.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form>
+        <p>Namen eingeben:</p>
+        <input type="text" name="name" id="name">
+        <label for="name">Name</label>
+        <br>
+        <p>Alter eingeben:</p>
+        <input type="number" name="age" id="age" min="18" value="30">
+        <label for="age">Alter</label>
+        <br>
+        <p>Geschlecht wählen:</p>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Männlich</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Weiblich</label><br>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Anderes</label>
+        <br><br>
+        <button type="reset">Eingaben zurücksetzen</button>
+        <button type="submit">Eingaben absenden</button>
+    </form>
+
+</body>
+
+</html>
