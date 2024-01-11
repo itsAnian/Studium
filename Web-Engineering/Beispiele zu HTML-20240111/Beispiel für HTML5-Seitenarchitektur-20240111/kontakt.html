@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="DE">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kontaktformular</title>
+        <link rel="icon" type="image/svg+xml" href="butterfly.svg" sizes="any">
+    </head>
+    <body>
+        <h1>Kontaktformular</h1>
+        <form name="contact_form">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name"><br><br>
+            <label for="age">Alter:</label>
+            <input type="number" name="age" id="age" min="18" value="30"><br><br>
+            <label for="subject">Betreff:</label>
+            <select name="subject">
+                <option value="nichts">Bitte wählen</option>
+                <option value="request">Anfrage</option>
+                <option value="order">Bestellung</option>
+                <option value="other">Sonstiges</option>
+            </select><br><br>
+            <label for="textinput">Ihre Nachricht:</label><br>
+            <textarea name="textinput" cols="30" rows="3">
+            </textarea><br>
+            <p>Newsletter abonnieren:</p>
+            <input type="radio" id="yes" name="newsletter" value="yes">
+            <label for="yes">Ja</label><br>
+            <input type="radio" id="no" name="newsletter" value="no">
+            <label for="no">Nein</label><br><br>
+            <button type="reset">Eingaben zurücksetzen</button>
+            <button type="submit">Eingaben absenden</button>
+        </form>
+    </body>
+</html>

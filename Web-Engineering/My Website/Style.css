@@ -1,0 +1,147 @@
+html{
+    background-color: lightgreen;
+    font-size: 20px;
+}
+
+body{
+    color: yellow;
+}
+
+h1, h2, h3{
+    font: bold;
+    color:blueviolet;
+    background-color: salmon;
+}
+
+.topnav {
+    background-color:purple;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .topnav a {
+    float: left;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color:red;
+    color: green;
+  }
+
+  .topnav a.active {
+    background-color: lightgreen;
+    color:aqua;
+  }
+
+img{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100px; height: 100px; background-color:#ffe672;
+
+    animation-name: rotate-center;
+    animation-duration: 0.1s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+
+    /* shorthand
+    animation: rotate-center 0.2s ease 0s infinite normal none;*/
+}
+@keyframes rotate-center {
+
+    0% {
+        transform:rotate(0);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+article{
+    color: pink;
+    background-color: yellow;
+}
+
+#Optigrill_img{
+    float: right;
+    border-radius: 45%;
+    margin-bottom: 50px;
+}
+
+#Sandwich_img{
+    width: 1000px;
+    height: 600px;
+    float: right;
+}
+
+#Pfannkuchen_img{
+    float: right;
+}
+
+table{
+    text-align: center;
+}
+
+aside {
+
+    display: flex;
+
+    justify-content: space-evenly;
+    align-items: flex-end;
+    /* flex-flow: row wrap; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+
+    background-color: #bbdefb;
+    height: 100%;
+    padding: 15px;
+    gap: 5px;
+
+}
+
+  aside{
+    background: #ffecb3;
+    border: 3px solid #ffcc80;
+    border-radius: 5px;
+    padding: 8px;
+    align-self: center;
+}
+
+footer{
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: flex-end;
+    /* flex-flow: row wrap; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+
+    background-color: #bbdefb;
+    height: 100%;
+    padding: 15px;
+    gap: 5px;
+
+}
+
+.footer_href{
+    background: #ffecb3;
+    border: 3px solid #ffcc80;
+    border-radius: 5px;
+    padding: 8px;
+}
