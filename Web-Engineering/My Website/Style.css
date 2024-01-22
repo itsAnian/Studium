@@ -1,147 +1,71 @@
-html{
-    background-color: lightgreen;
-    font-size: 20px;
+/* FILEPATH: style.css */
+
+/* Reset default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    color: yellow;
+/* Set a light background color */
+body {
+    background-color: #f5f5f5;
 }
-
-h1, h2, h3{
-    font: bold;
-    color:blueviolet;
-    background-color: salmon;
+/* Position the images on the right side */
+.container img {
+    margin-left: auto;
+    margin-right: 0;
 }
-
+/* Top navigation bar */
 .topnav {
-    background-color:purple;
-    overflow: hidden;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-  }
+    background-color: #f5f5f5;
+    padding: 10px;
+    z-index: 999;
+}
 
-  .topnav a {
-    float: left;
-    color: red;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+}
 
-  .topnav a:hover {
-    background-color:red;
-    color: green;
-  }
-
-  .topnav a.active {
-    background-color: lightgreen;
-    color:aqua;
-  }
-
-img{
-    width: 300px;
-    height: 300px;
+/* Center the content */
+.container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100px; height: 100px; background-color:#ffe672;
-
-    animation-name: rotate-center;
-    animation-duration: 0.1s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-
-    /* shorthand
-    animation: rotate-center 0.2s ease 0s infinite normal none;*/
-}
-@keyframes rotate-center {
-
-    0% {
-        transform:rotate(0);
-    }
-    100% {
-        transform:rotate(360deg);
-    }
+    align-items: center;
+    height: 100vh;
 }
 
-article{
-    color: pink;
-    background-color: yellow;
+/* Style the heading */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-#Optigrill_img{
-    float: right;
-    border-radius: 45%;
-    margin-bottom: 50px;
+/* Style the paragraph */
+p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
 }
 
-#Sandwich_img{
-    width: 1000px;
-    height: 600px;
-    float: right;
+/* Adjust the pictures */
+img {
+    width: 200px;
+    height: 200px;
 }
 
-#Pfannkuchen_img{
-    float: right;
+/* Position the images on the right side */
+.container img {
+    margin-left: auto;
 }
 
-table{
-    text-align: center;
-}
-
-aside {
-
-    display: flex;
-
-    justify-content: space-evenly;
-    align-items: flex-end;
-    /* flex-flow: row wrap; */
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-end;
-
-    background-color: #bbdefb;
-    height: 100%;
-    padding: 15px;
-    gap: 5px;
-
-}
-
-  aside{
-    background: #ffecb3;
-    border: 3px solid #ffcc80;
-    border-radius: 5px;
-    padding: 8px;
-    align-self: center;
-}
-
-footer{
-
-    display: flex;
-
-    justify-content: space-around;
-    align-items: flex-end;
-    /* flex-flow: row wrap; */
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-end;
-
-    background-color: #bbdefb;
-    height: 100%;
-    padding: 15px;
-    gap: 5px;
-
-}
-
-.footer_href{
-    background: #ffecb3;
-    border: 3px solid #ffcc80;
-    border-radius: 5px;
-    padding: 8px;
+/* Position the text next to the images */
+.container p {
+    margin-left: 20px;
 }
