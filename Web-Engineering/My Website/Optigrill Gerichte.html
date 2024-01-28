@@ -7,17 +7,73 @@
     <title>Gerichte</title>
 </head>
 <body>
+    <script>
+        alert("Ich bin nervig")
+    </script>
     <header>
         <nav class="topnav">
             <a href="#Optigrill">Optigrill</a>
             <a href="#Gericht_1_Sandwich">Sandwich</a>
             <a href="#Gericht_2_Pfannkuchen">Pfannkuchen</a>
         </nav>
+        <script>
+            function updateTimer() {
+                var currentTime = new Date();
+                var hours = currentTime.getHours();
+                var minutes = currentTime.getMinutes();
+                var seconds = currentTime.getSeconds();
+
+                // Add leading zeros if necessary
+                hours = (hours < 10 ? "0" : "") + hours;
+                minutes = (minutes < 10 ? "0" : "") + minutes;
+                seconds = (seconds < 10 ? "0" : "") + seconds;
+
+                // Display the time
+                document.getElementById("timer").innerHTML = hours + ":" + minutes + ":" + seconds;
+            }
+
+            // Update the timer every second
+            setInterval(updateTimer, 1000);
+        </script>
+    </header>
+    <body>
+        <h1>Live Timer</h1>
+        <div id="timer"></div>
+        <button onclick="changeStylesheet()">Change Style</button>
+        <script>
+            function changeStylesheet() {
+                var stylesheet = document.querySelector("link[href='Style.css']");
+                if (stylesheet.getAttribute("href") === "Style.css") {
+                    stylesheet.setAttribute("href", "trashy_Style.css");
+                } else {
+                    stylesheet.setAttribute("href", "Style.css");
+                }
+            }
+        </script>
+        <script>
+            document.addEventListener("click", function() {
+                var paragraphs = document.getElementsByTagName("p");
+                for (var i = 0; i < paragraphs.length; i++) {
+                    paragraphs[i].style.color = "lightblue";
+                }
+            });
+        </script>
+        <script>
+            function swipe() {
+            var largeImage = document.getElementById('largeImage');
+            largeImage.style.display = 'block';
+            largeImage.style.width=200+"px";
+            largeImage.style.height=200+"px";
+            var url=largeImage.getAttribute('src');
+            window.open(url,'Image','width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+            }
+        </script>
+        </nav>
 
     <h1>Auf dieser Website finden sie einige Gerichte, die man mit einem Optigrill machen kann</h1>
     <article id="Optigrill">
         <h2>Was ist ein Optigrill</h2>
-        <img src="Optigrill.webp" alt="Bild von einem Optigrill" id="Optigrill_img">
+        <img src="Optigrill.webp" alt="Bild von einem Optigrill" id="Optigrill_img" onclick="swipe();">
 
         <p>
                 ChatGPT: <br>
