@@ -1,0 +1,42 @@
+{
+    "folders": [
+        {
+            "name": "Python für Einsteiger - Workbook",
+            "path": ".",
+        }
+    ],
+    "settings":{
+        "cSpell.language": "en,de-DE",
+        "jupyter.showVariableViewWhenDebugging": false,
+        "notebook.consolidatedRunButton": true,
+        "notebook.compactView": false,
+        "notebook.editorOptionsCustomizations": {
+    
+        },
+        "notebook.cellToolbarVisibility": "hover",
+        "markdown.preview.doubleClickToSwitchToEditor": false,
+        "notebook.cellToolbarLocation": {
+            "default": "hidden"
+        },
+    
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Open Workbook",
+                "command": "code ./src/Workbook.ipynb",
+                "type": "shell",
+                "args": [],
+                "problemMatcher": [
+                    "$tsc"
+                ],
+                "presentation": {
+                    "reveal": "never"
+                },
+                "group": "build",
+                "runOptions": {"runOn": "folderOpen"}
+            }
+        ]
+    }
+}
