@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-
-typedef struct public public;
+#include <time.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int Matrix[9][9] = {
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
+        {0, 0, 0, 0, 0, 0, 0, 0,0},
 };
 
 void SetNumber(){
@@ -61,6 +62,57 @@ void SetNumber(){
             printf("\nno row found, there are only the rows a-i");
     }
 }
+
+int checkrow(){
+    printf("");
+    return 1;
+}
+
+void RandomNumbers(){
+    //doesn't work with seed (I only get always the same number)
+    //srand(time(0));
+    int randomNum;
+    for(int i = 0 ; i < 9; i++ ) {
+        int rowStorage[9] = {1111,1111,1111,1111,1111,1111,1111,1111,1111};
+        printf("\nreset\n");
+        //sleep(5);
+        for(int ii = 0; ii < 9; ii++){
+            randomNum = rand() % 9 +1; // resets the rowStorage ... // I don't understand why
+            for(int j = 0; j < 9; j++){
+                printf("%d", rowStorage[j]);
+            }
+            printf("\n");
+            for(int j = 0; j < 9; j++){
+                rowStorage[j] = 0;
+            }
+            for (int j = 0; j < 9; j++) {
+                //printf("NewRandomNum %d\n", randomNum);
+                if (rowStorage[j] == randomNum) {
+                    //printf("in row \n");
+                    randomNum = rand() % 9 +1;
+                }
+                rowStorage[ii] = randomNum;
+                //printf("Eingetragen: %d ", rowStorage[ii]);
+                /*
+                for(int j = 0; j < 9; j++){
+                    printf("%d", rowStorage[j]);
+                }
+                printf("\n");
+                for(int j = 0; j < 9; j++){
+                    rowStorage[j] = 0;
+                }
+                 */
+            }
+            Matrix[i][ii] = randomNum;
+            //printf("%d", Matrix[i][ii]);
+
+        }
+    }
+}
+
+
+
+
 void AskName(char Name[30]) {
     //asks for name
     printf("Who is playing right now?\n");
@@ -100,8 +152,12 @@ void PrintSudokuField(char Name[30]){
 int main() {
     char Name [30];
     //AskName(Name);
-    while (true){
-        PrintSudokuField(Name);
-        SetNumber();
-    }
+    RandomNumbers();
+    PrintSudokuField(Name);
+    //for(int i = 0; i < 40; i++)
+    //    printf("%d\n", RandomNumberGen());
+    //while (true){
+    //    PrintSudokuField(Name);
+    //    SetNumber();
+    //}
 }
