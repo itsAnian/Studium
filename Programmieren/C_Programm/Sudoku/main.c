@@ -4,18 +4,16 @@
 
 typedef struct public public;
 
-int column_a [] = {1,2,3,4,5,6,7,8,9,};
-int column_b [] = {1,2,3,4,5,6,7,8,9,};
-int column_c [] = {1,2,3,4,5,6,7,8,9,};
-int column_d [] = {1,2,3,4,5,6,7,8,9,};
-int column_e [] = {1,2,3,4,5,6,7,8,9,};
-int column_f [] = {1,2,3,4,5,6,7,8,9,};
-int column_g [] = {1,2,3,4,5,6,7,8,9,};
-int column_h [] = {1,2,3,4,5,6,7,8,9,};
-int column_i [] = {1,2,3,4,5,6,7,8,9,};
-
-struct NameStorage{
-    char name[30];
+int Matrix[9][9] = {
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
 };
 
 void SetNumber(){
@@ -32,75 +30,78 @@ void SetNumber(){
     }
     switch(inputColumn){
         case 'a': case 'A':
-            column_a[inputRow - 1] = inputNumber;
-            printf("%d", column_a[inputRow]);
+            Matrix[inputRow - 1][0] = inputNumber;
+            printf("\n%d\n", inputRow);
             break;
         case 'b': case 'B':
-            column_b[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][1] = inputNumber;
             break;
         case 'c': case 'C':
-            column_c[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][2] = inputNumber;
             break;
         case 'd': case 'D':
-            column_d[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][3] = inputNumber;
             break;
         case 'e': case 'E':
-            column_e[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][4] = inputNumber;
             break;
         case 'f': case 'F':
-            column_f[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][5] = inputNumber;
             break;
         case 'g': case 'G':
-            column_g[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][6] = inputNumber;
             break;
         case 'h': case 'H':
-            column_h[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][7] = inputNumber;
             break;
         case 'i': case 'I':
-            column_i[inputRow - 1] = inputNumber;
+            Matrix[inputRow - 1][8] = inputNumber;
             break;
         default:
             printf("\nno row found, there are only the rows a-i");
     }
 }
-void AskName(struct NameStorage *NameS) {
+void AskName(char Name[30]) {
     //asks for name
     printf("Who is playing right now?\n");
-    scanf("%29s", NameS -> name);
+    scanf("%29s", Name);
 }
 
-void PrintSudokuField(struct NameStorage *NameS){
+void PrintSudokuField(char Name[30]){
     //defines everything
     int whichRow = 0;
     char column [] = "  abc def ghi";
     char *borderBottomTop ="  ––– ––– –––\n";
     int rowNumber[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     char *row = "|";
-    int i;
-    int k;
+
     //prints everything out
-    printf("%s is playing\n\n", NameS -> name);
+    printf("%s is playing\n\n", Name);
     printf("%s", column);
 
     printf("\n");
-    for (i=0; i < 3; i++){
+    for (int i=0; i < 3; i++){
         printf("%s", borderBottomTop);
-        for (k=0; k < 3; k++) {
-            printf("%d%s%d%d%d%s%d%d%d%s%d%d%d%s\n", rowNumber[whichRow], row, column_a[whichRow],column_b[whichRow],column_c[whichRow], row, column_d[whichRow],column_e[whichRow],column_f[whichRow], row, column_g[whichRow],column_h[whichRow],column_i[whichRow], row);
+        for (int k=0; k < 3; k++) {
+            printf("%d%s",rowNumber[whichRow], row);
+            for (int j = 0; j < 9; j++){
+                printf("%d", Matrix[whichRow][j]);
+                if(2 == j || 5 == j || 8 == j){
+                    printf("%s", row);
+                }
+            }
+            printf("\n");
             whichRow += 1;
         }
     }
     printf("%s", borderBottomTop);
 }
 
-
-
-
 int main() {
-    struct NameStorage NameS;
-    AskName(&NameS);
+    char Name [30];
+    //AskName(Name);
     while (true){
-        PrintSudokuField(&NameS);
-        SetNumber(&NameS);
+        PrintSudokuField(Name);
+        SetNumber();
     }
 }
