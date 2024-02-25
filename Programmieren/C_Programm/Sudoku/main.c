@@ -4,6 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "validation.c"
 
 int Matrix[9][9] = {
         {0, 0, 0, 0, 0, 0, 0, 0,0},
@@ -23,9 +24,6 @@ void SetNumber(){
     int inputNumber;
     printf("Switch a number [columnrow number]:\n");
     scanf(" %c%d%d",&inputColumn, &inputRow, &inputNumber);
-    //printf("%c\n",inputColumn);
-    //printf("%d\n",inputRow);
-    //printf("%d",inputNumber);
     if (9 < inputRow || 9 < inputNumber){
         printf("\nplease only input Numbers between 1-9");
     }
@@ -63,55 +61,29 @@ void SetNumber(){
     }
 }
 
-int checkrow(){
-    printf("");
-    return 1;
-}
-
-void RandomNumbers(){
-    //doesn't work with seed (I only get always the same number)
-    //srand(time(0));
-    int randomNum;
-    for(int i = 0 ; i < 9; i++ ) {
-        int rowStorage[9] = {1111,1111,1111,1111,1111,1111,1111,1111,1111};
-        printf("\nreset\n");
-        //sleep(5);
-        for(int ii = 0; ii < 9; ii++){
-            randomNum = rand() % 9 +1; // resets the rowStorage ... // I don't understand why
-            for(int j = 0; j < 9; j++){
-                printf("%d", rowStorage[j]);
-            }
-            printf("\n");
-            for(int j = 0; j < 9; j++){
-                rowStorage[j] = 0;
-            }
-            for (int j = 0; j < 9; j++) {
-                //printf("NewRandomNum %d\n", randomNum);
-                if (rowStorage[j] == randomNum) {
-                    //printf("in row \n");
-                    randomNum = rand() % 9 +1;
+int RandomNumbers() {
+    int f = 0;
+    for (int i = 0; i < 9; i++) {
+        for (int ii = 0; ii < 9; ii++) {
+            Matrix[i][ii] = rand() % 9 + 1;
+            while (2 == IsValid(Matrix, i, ii)) {
+                f = f+1;
+                Matrix[i][ii] = rand() % 9 + 1;
+                if (f > 100){
+                    f = 0;
+                    for (int i = 0; i < 9; i++) {
+                        for (int ii = 0; ii < 9; ii++) {
+                            Matrix[i][ii] = 0;
+                        }
+                    }
+                    return 0;
                 }
-                rowStorage[ii] = randomNum;
-                //printf("Eingetragen: %d ", rowStorage[ii]);
-                /*
-                for(int j = 0; j < 9; j++){
-                    printf("%d", rowStorage[j]);
-                }
-                printf("\n");
-                for(int j = 0; j < 9; j++){
-                    rowStorage[j] = 0;
-                }
-                 */
             }
-            Matrix[i][ii] = randomNum;
-            //printf("%d", Matrix[i][ii]);
-
+            f = 0;
         }
     }
+    return 1;
 }
-
-
-
 
 void AskName(char Name[30]) {
     //asks for name
@@ -119,7 +91,14 @@ void AskName(char Name[30]) {
     scanf("%29s", Name);
 }
 
-void PrintSudokuField(char Name[30]){
+void PrintSudokuField(char Name[30], bool exists){
+    if (exists == false) {
+        printf("false");
+        while (0 == RandomNumbers()) {
+            RandomNumbers();
+        }
+    }
+
     //defines everything
     int whichRow = 0;
     char column [] = "  abc def ghi";
@@ -150,14 +129,14 @@ void PrintSudokuField(char Name[30]){
 }
 
 int main() {
+    srand(time(NULL));
     char Name [30];
+    bool exist = false;
+    bool notFinished = true;
     //AskName(Name);
-    RandomNumbers();
-    PrintSudokuField(Name);
-    //for(int i = 0; i < 40; i++)
-    //    printf("%d\n", RandomNumberGen());
-    //while (true){
-    //    PrintSudokuField(Name);
-    //    SetNumber();
-    //}
+    while (notFinished){
+        PrintSudokuField(Name, exist);
+        exist = true;
+        SetNumber();
+    }
 }
