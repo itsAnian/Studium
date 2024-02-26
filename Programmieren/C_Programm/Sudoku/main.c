@@ -66,14 +66,14 @@ int RandomNumbers() {
     for (int i = 0; i < 9; i++) {
         for (int ii = 0; ii < 9; ii++) {
             Matrix[i][ii] = rand() % 9 + 1;
-            while (2 == IsValid(Matrix, i, ii)) {
+            while (404 == IsValid(Matrix, i, ii)) {
                 f = f+1;
                 Matrix[i][ii] = rand() % 9 + 1;
                 if (f > 100){
                     f = 0;
-                    for (int i = 0; i < 9; i++) {
-                        for (int ii = 0; ii < 9; ii++) {
-                            Matrix[i][ii] = 0;
+                    for (int j = 0; j < 9; j++) {
+                        for (int jj = 0; jj < 9; jj++) {
+                            Matrix[j][jj] = 0;
                         }
                     }
                     return 0;
@@ -93,8 +93,10 @@ void AskName(char Name[30]) {
 
 void PrintSudokuField(char Name[30], bool exists){
     if (exists == false) {
-        printf("false");
+        int f = 0;
         while (0 == RandomNumbers()) {
+            f +=1;
+            //printf("try: %d\n", f);
             RandomNumbers();
         }
     }
@@ -129,14 +131,21 @@ void PrintSudokuField(char Name[30], bool exists){
 }
 
 int main() {
+    double time_spent = 0.0;
+    clock_t begin = clock();
     srand(time(NULL));
     char Name [30];
     bool exist = false;
-    bool notFinished = true;
+    bool playing = true;
     //AskName(Name);
-    while (notFinished){
+    while (playing){
         PrintSudokuField(Name, exist);
         exist = true;
+        break;
         SetNumber();
     }
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("The elapsed time is %f seconds", time_spent);
+
 }

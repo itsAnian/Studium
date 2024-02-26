@@ -54,6 +54,6 @@ static int IsValid(int array[9][9], int x, int y){
     if (1==CheckColumn(array,x, y) && 1==CheckRow(array,x,y) && 1==CheckBox(array, x, y)){
         return 1;
     }else{
-        return 2;
+        return 404;
     }
 }
