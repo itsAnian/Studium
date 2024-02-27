@@ -1,6 +1,3 @@
-//
-// Created by anian on 11.02.24.
-//
 #include <stdio.h>
 
 static void DebugArray(int array[9]){
