@@ -29,7 +29,7 @@ int RandomNumbers() {
                 Matrix[i][ii] = rand() % 9 + 1;
                 if (f > 100){
                     f = 0;
-                    for (int j = 0; j < 9; j++) {
+                    for (int j = 0; j <= i; j++) {
                         for (int jj = 0; jj < 9; jj++) {
                             Matrix[j][jj] = 0;
                         }
