@@ -19,18 +19,24 @@ int Matrix[9][9] = {
         {0, 0, 0, 0, 0, 0, 0, 0,0},
 };
 
+
+int operationCounter = 0;
+
 int RandomNumbers() {
     int f = 0;
     for (int i = 0; i < 9; i++) {
         for (int ii = 0; ii < 9; ii++) {
             Matrix[i][ii] = rand() % 9 + 1;
+            operationCounter += 1;
             while (404 == IsValid(Matrix, i, ii)) {
                 f = f+1;
+                operationCounter += 1;
                 Matrix[i][ii] = rand() % 9 + 1;
                 if (f > 100){
                     f = 0;
                     for (int j = 0; j <= i; j++) {
                         for (int jj = 0; jj < 9; jj++) {
+                            operationCounter += 1;
                             Matrix[j][jj] = 0;
                         }
                     }
@@ -49,16 +55,17 @@ void AskName(char Name[30]) {
     scanf("%29s", Name);
 }
 
-void PrintSudokuField(char Name[30], bool exists){
-    if (exists == false) {
-        int f = 0;
-        while (0 == RandomNumbers()) {
-            f +=1;
-            RandomNumbers();
-        }
-        printf("try: %d\n", f);
+void GenerateField(){
+    int f = 0;
+    while (0 == RandomNumbers()) {
+        f +=1;
+        RandomNumbers();
     }
+    printf("Operationcounter: %d\n", operationCounter);
+    printf("try: %d\n", f);
+}
 
+void PrintSudokuField(char Name[30]){
     //defines everything
     int whichRow = 0;
     char column [] = "  abc def ghi";
@@ -93,12 +100,11 @@ int main() {
     clock_t begin = clock();
     srand(time(NULL));
     char Name [30];
-    bool exist = false;
     bool playing = true;
     //AskName(Name);
+    GenerateField();
     while (playing){
-        PrintSudokuField(Name, exist);
-        exist = true;
+        PrintSudokuField(Name);
         //Input();
         playing = false;
     }
