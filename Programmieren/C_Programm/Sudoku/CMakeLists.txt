@@ -5,4 +5,10 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(Sudoku main.c
         validation.c
-        userinput.c)
+        userinput.c
+        validation.h
+        userinput.h
+        generation.c
+        generation.h
+        main.h
+)

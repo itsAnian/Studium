@@ -1,28 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include "generation.h"
+#include "validation.h"
+#include "userinput.h"
 
-static void Input(){
-    char instruction [8];
-    printf("[undo] [check] [quit] [solution] [numinput]\n");
-    scanf("%7s\n", instruction);
-    if (strcmp ("undo", instruction) == 0){
-        printf("undo");
-    }
-    if (strcmp ("check", instruction) == 0){
-        printf("validation");
-    }
-    if (strcmp ("quit", instruction) == 0){
-        printf("quit");
-    }
-    if (strcmp ("solution", instruction) == 0){
-        printf("solution");
-    }
-    if (strcmp ("numinput", instruction) == 0){
-        printf("numberinput");
+void Input(char name[30], int copy[9][9], int array[9][9], bool* playing){
+    int instruction = 0;
+    printf("Type [1: numinput] [2: check] [3: solution] [4: undo] [9:quit]\n");
+    scanf("%d", &instruction);
+
+    switch(instruction){
+        case 1:
+            SetNumber(array);
+            break;
+        case 2:
+            for (int i = 0; i < 9; ++i) {
+                for (int ii = 0; ii < 9; ++ii) {
+                    if (404 == IsValid(array, i, ii)){
+                        if (array[i][ii] != 0){
+                            printf("Invalid: Matrix[%d][%d] = %d\n", i, ii, array[i][ii]);
+                            //work in progress (a1=6 i1=6), when you set a1 it says i1 cause its the one checked later
+                        }
+                    }
+                }
+            }
+            break;
+        case 3:
+            printf("This is one possible solution:\n");
+            PrintSudokuField(name, copy);
+            break;
+        case 4:
+            printf("undo");
+            break;
+        case 9:
+            *playing = false;
+            break;
+        default:
+            printf("You inserted a num/char that does not do something.");
     }
 }
 
-static void SetNumber(int array[9][9]){
+void SetNumber(int array[9][9]){
     char inputColumn;
     int inputRow;
     int inputNumber;
