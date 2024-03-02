@@ -7,16 +7,31 @@
 #include "validation.h"
 #include "userinput.h"
 
-void Input(char name[30], int copy[9][9], int array[9][9], bool* playing){
+void Input(char name[30], int copy[9][9], int array[9][9], bool* playing, bool* validation){
     int instruction = 0;
-    printf("Type [1: numinput] [2: check] [3: solution] [4: undo] [9:quit]\n");
+    printf("Type [1: numinput] [2: check] [3: solution] [4: undo] [5: whole validation] [9:quit]\n");
     scanf("%d", &instruction);
+    bool validationparameter = *validation;
 
     switch(instruction){
         case 1:
-            SetNumber(array);
+            SetNumber(array, &validationparameter);
             break;
         case 2:
+            if (*validation == true){
+                *validation = false;
+            }else{
+                *validation = true;
+            }
+            break;
+        case 3:
+            printf("This is one possible solution:\n");
+            PrintSudokuField(name, copy);
+            break;
+        case 4:
+            printf("undo");
+            break;
+        case 5:
             for (int i = 0; i < 9; ++i) {
                 for (int ii = 0; ii < 9; ++ii) {
                     if (404 == IsValid(array, i, ii)){
@@ -28,13 +43,6 @@ void Input(char name[30], int copy[9][9], int array[9][9], bool* playing){
                 }
             }
             break;
-        case 3:
-            printf("This is one possible solution:\n");
-            PrintSudokuField(name, copy);
-            break;
-        case 4:
-            printf("undo");
-            break;
         case 9:
             *playing = false;
             break;
@@ -43,42 +51,123 @@ void Input(char name[30], int copy[9][9], int array[9][9], bool* playing){
     }
 }
 
-void SetNumber(int array[9][9]){
+void SetNumber(int array[9][9], bool*validation){
     char inputColumn;
     int inputRow;
     int inputNumber;
+
+    printf("Switch a number in [column]:\n");
+    scanf(" %c",&inputColumn);
+    printf("Switch a number in [row]:\n");
+    scanf(" %d", &inputRow);
+    printf("Number you want to set [number]:\n");
+    scanf(" %d", &inputNumber);
+    /*
     printf("Switch a number [columnrow number]:\n");
     scanf(" %c%d%d",&inputColumn, &inputRow, &inputNumber);
+     */
     if (9 < inputRow || 9 < inputNumber){
         printf("\nplease only input Numbers between 1-9");
     }
     switch(inputColumn){
         case 'a': case 'A':
-            array[inputRow - 1][0] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][0] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 0)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][0] = 0;
+                }
+            }else{
+                array[inputRow - 1][0] = inputNumber;
+            }
             break;
         case 'b': case 'B':
-            array[inputRow - 1][1] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][1] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 1)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][1] = 0;
+                }
+            }else{
+                array[inputRow - 1][1] = inputNumber;
+            }
             break;
         case 'c': case 'C':
-            array[inputRow - 1][2] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][2] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 2)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][2] = 0;
+                }
+            }else{
+                array[inputRow - 1][2] = inputNumber;
+            }
             break;
         case 'd': case 'D':
-            array[inputRow - 1][3] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][3] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 3)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][3] = 0;
+                }
+            }else{
+                array[inputRow - 1][3] = inputNumber;
+            }
             break;
         case 'e': case 'E':
-            array[inputRow - 1][4] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][4] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 4)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][4] = 0;
+                }
+            }else{
+                array[inputRow - 1][4] = inputNumber;
+            }
             break;
         case 'f': case 'F':
-            array[inputRow - 1][5] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][5] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 5)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][5] = 0;
+                }
+            }else{
+                array[inputRow - 1][5] = inputNumber;
+            }
             break;
         case 'g': case 'G':
-            array[inputRow - 1][6] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][6] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 6)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][6] = 0;
+                }
+            }else{
+                array[inputRow - 1][6] = inputNumber;
+            }
             break;
         case 'h': case 'H':
-            array[inputRow - 1][7] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][7] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 7)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][7] = 0;
+                }
+            }else{
+                array[inputRow - 1][7] = inputNumber;
+            }
             break;
         case 'i': case 'I':
-            array[inputRow - 1][8] = inputNumber;
+            if (*validation == true){
+                array[inputRow - 1][8] = inputNumber;
+                if (404 == IsValid(array, inputRow-1, 8)){
+                    printf("its not valid to put this number in here\n");
+                    array[inputRow - 1][8] = 0;
+                }
+            }else{
+                array[inputRow - 1][8] = inputNumber;
+            }
             break;
         case 'q':
             printf("quit");

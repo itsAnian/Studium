@@ -18,6 +18,7 @@ void AskName(char Name[30]) {
 }
 
 int main() {
+    bool validation = true;
     double time_spent = 0.0;
     clock_t begin = clock();
     srand(time(NULL));
@@ -28,8 +29,7 @@ int main() {
     DeleteNumbers(copy, Matrix);
     while (playing){
         PrintSudokuField(name, Matrix);
-        Input(name, copy, Matrix, &playing);
-        //playing = false;
+        Input(name, copy, Matrix, &playing, &validation);
     }
     clock_t end = clock();
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
