@@ -1,0 +1,35 @@
+thead {
+font-size: 20px;
+font-family: Sans-serif;
+font-weight: bold;
+text-align: center;	
+}
+
+tbody{
+text-align: right;
+background-color: #0000FF;
+border: 50px;
+}
+
+table{
+border: 50px;
+}
+
+body{
+text-size: 50px;
+}
+
+@media only screen and (min-width: 600px){
+body{
+background-color: #FFFF00;}
+}
+
+@media only screen and (min-width: 800px){
+body{
+background-color: #FF0000;}
+}
+
+@media only screen and (min-width: 1000px){
+body{
+background-color: #00FF00;}
+}
