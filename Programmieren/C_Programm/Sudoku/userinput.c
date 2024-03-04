@@ -1,12 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
-#include <ctype.h>
 #include "generation.h"
 #include "validation.h"
 #include "userinput.h"
 
+//handles all Inputs
+//numinput calls the SetNumber function
+//check toggles if the IsValid function is active during the SetNumber Function
+//solution prints the copy
+//undo !!! in progress !!!
+//whole validation - validates the sudoku when its finished
+//quit stops the loop -> let the mainfunction end
 void Input(char name[30], int copy[9][9], int array[9][9], bool* playing, bool* validation){
     int instruction = 0;
     printf("Type [1: numinput] [2: check] [3: solution] [4: undo] [5: whole validation] [9:quit]\n");
@@ -51,6 +55,8 @@ void Input(char name[30], int copy[9][9], int array[9][9], bool* playing, bool* 
     }
 }
 
+//Sets the number for column row and the inputnumber
+//if check is active (it is active by default) it checks if you are allowed to put the number in it
 void SetNumber(int array[9][9], bool*validation){
     char inputColumn;
     int inputRow;

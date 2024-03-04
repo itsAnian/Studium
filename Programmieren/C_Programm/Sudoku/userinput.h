@@ -1,5 +1,3 @@
-#include <string.h>
-
 #ifndef SUDOKU_USERINPUT_H
 #define SUDOKU_USERINPUT_H
 

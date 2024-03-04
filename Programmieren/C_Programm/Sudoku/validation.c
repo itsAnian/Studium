@@ -46,7 +46,7 @@ int CheckBox( int array[9][9], int x, int y){
     return 1;
 }
 
-//Checks if everything is valid and returns 1 if so, else 2
+//Checks if everything is valid and returns 1 if so, else 404
 int IsValid(int array[9][9], int x, int y){
     if (1==CheckColumn(array,x, y) && 1==CheckRow(array,x,y) && 1==CheckBox(array, x, y)){
         return 1;

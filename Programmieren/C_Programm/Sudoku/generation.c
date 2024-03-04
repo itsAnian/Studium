@@ -4,7 +4,8 @@
 #include "validation.h"
 
 int operationCounter = 0;
-
+//puts random numbers into each field from top left to bottom right
+//if it gets stuck, it rewrites everything with 0 and returns 0
 int RandomNumbers(int array[9][9]) {
     int f = 0;
     for (int i = 0; i < 9; i++) {
@@ -32,6 +33,7 @@ int RandomNumbers(int array[9][9]) {
     return 1;
 }
 
+//starts a loop, which generates a new field as long the RandomNumbers fun returns 0 (invalid try)
 void GenerateField(int array[9][9]){
     int f = 0;
     while (0 == RandomNumbers(array)) {
@@ -42,6 +44,7 @@ void GenerateField(int array[9][9]){
     printf("try: %d\n", f);
 }
 
+//Prints the Sudoku Field
 void PrintSudokuField(char name[30], int array[9][9]){
     //defines everything
     int whichRow = 0;
@@ -72,6 +75,9 @@ void PrintSudokuField(char name[30], int array[9][9]){
     printf("%s", borderBottomTop);
 }
 
+//copies all Numbers into the "copy" array
+//generates a random Number for 17 -> 36 Numbers be left visible
+//picks random field and trys to put 0 in it, if impossible, it trys another field
 void DeleteNumbers(int copy[9][9], int array[9][9]){
     for (int i = 0; i < 9; ++i) {
         for (int ii = 0; ii < 9; ++ii) {
@@ -79,7 +85,7 @@ void DeleteNumbers(int copy[9][9], int array[9][9]){
         }
     }
     int numbersToDelete = 81-(17+(rand()%19)+1);
-    printf("Visible Nums: %d", 81-numbersToDelete);
+    printf("Visible Nums: %d\n", 81-numbersToDelete);
     int row;
     int col;
     while(numbersToDelete != 0){
